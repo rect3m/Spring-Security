@@ -10,8 +10,8 @@ public class AuthService {
     public String getAuthenticatedUsername() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         if (authentication != null && authentication.isAuthenticated()) {
-            return authentication.getName(); // повертає ім'я користувача
+            return authentication.getName();
         }
-        return null; // якщо користувач не авторизований
+        return null;
     }
 }

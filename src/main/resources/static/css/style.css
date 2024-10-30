@@ -1,6 +1,7 @@
 @import "index.css";
 @import "buttons.css";
 @import "menu.css";
+@import "google.css";
 
 * {
   font-family: 'Noto Sans HK', sans-serif;

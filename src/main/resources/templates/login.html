@@ -25,7 +25,10 @@
 
     <div class="block">
       <button type="submit">Увійти</button>
-      <a href="/oauth2/authorization/google">Login with Google</a>
+    </div>
+
+    <div class="block">
+      <a class="google-login-button" href="/oauth2/authorization/google">Увійти з Google</a>
     </div>
 
     <div class="block" th:if="${param.error}">

@@ -20,9 +20,9 @@ public class UserService {
     public boolean registerUser(User user) {
         Optional<User> existingUser = userRepository.findByUsername(user.getUsername());
         if (existingUser.isPresent()) {
-            return false; // Користувач вже існує
+            return false;
         }
-        user.setPassword(passwordEncoder.encode(user.getPassword())); // Хешування паролю
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
         userRepository.save(user);
         return true;
     }

@@ -25,42 +25,41 @@ public class SecurityConfig {
         http
                 .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/auth/register").permitAll()  // Доступ до реєстрації
+                        .requestMatchers("/auth/register").permitAll()
                         .requestMatchers("/auth/login").permitAll()
-                        .requestMatchers("/menu").permitAll() // Доступ до входу
+                        .requestMatchers("/menu").permitAll()
                         .requestMatchers("/home").permitAll()
                         .requestMatchers("/css/**").permitAll()
-                        .anyRequest().authenticated()  // Інші запити потребують авторизації
+                        .anyRequest().authenticated()
                 )
                 .formLogin(form -> form
-                        .loginPage("/auth/login")  // Ваша сторінка входу
+                        .loginPage("/auth/login")
                         .defaultSuccessUrl("/menu",
-                                true)  // Перенаправлення на головну сторінку після успішного входу
-                        .failureUrl("/auth/login?error=true")  // Перенаправлення при помилці входу
+                                true)
+                        .failureUrl("/auth/login?error=true")
                         .permitAll()
                 )
                 .formLogin(form -> form
-                        .loginPage("/auth/register")  // Ваша сторінка входу
+                        .loginPage("/auth/register")
                         .defaultSuccessUrl("/menu",
-                                true)  // Перенаправлення на головну сторінку після успішного входу
+                                true)
                         .failureUrl(
-                                "/auth/register?error=true")  // Перенаправлення при помилці входу
+                                "/auth/register?error=true")
                         .permitAll()
                 )
                 .oauth2Login(oauth2Login ->
                         oauth2Login
                                 .defaultSuccessUrl(
-                                        "/menu") // куди перенаправити після успішного входу
-                                .failureUrl("/login?error") // куди перенаправити у разі помилки
+                                        "/menu")
+                                .failureUrl("/login?error")
                 )
                 .logout(logout ->
-                                logout
-                                        .logoutSuccessUrl(
-                                                "/menu") // URL, на який перенаправить після виходу
-                                        .invalidateHttpSession(true) // видалення сесії
-                                        .clearAuthentication(true) // очистка автентифікації
-                                        .deleteCookies("JSESSIONID")
-                        // видалення cookie з ідентифікатором сесії
+                        logout
+                                .logoutSuccessUrl(
+                                        "/menu")
+                                .invalidateHttpSession(true)
+                                .clearAuthentication(true)
+                                .deleteCookies("JSESSIONID")
                 );
 
         return http.build();

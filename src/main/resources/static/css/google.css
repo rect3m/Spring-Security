@@ -1,0 +1,15 @@
+.google-login-button {
+  display: inline-block;
+  padding: 10px 20px; /* Внутрішні відступи */
+  background-color: #4285F4; /* Синій колір Google */
+  color: white; /* Колір тексту */
+  text-align: center; /* Вирівнювання тексту */
+  border-radius: 5px; /* Закруглені кути */
+  text-decoration: none; /* Видалення підкреслення */
+  font-size: 16px; /* Розмір шрифту */
+  transition: background-color 0.3s; /* Плавний перехід */
+}
+
+.google-login-button:hover {
+  background-color: #357AE8; /* Темніший відтінок синього при наведенні */
+}

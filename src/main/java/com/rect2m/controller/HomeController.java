@@ -34,7 +34,7 @@ public class HomeController {
         } else if (username_reg != null && !username_reg.equals("anonymousUser")) {
             model.addAttribute("username", username_reg);
         } else {
-            model.addAttribute("username", null); // Користувач неавторизований
+            model.addAttribute("username", null);
         }
 
         return "home";
