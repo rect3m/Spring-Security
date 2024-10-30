@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+      name="viewport">
+  <link href="../static/css/style.css" rel="stylesheet" th:href="@{/css/style.css}">
+  <title>Реєстрація</title>
+</head>
+<body>
+<div class="form-container">
+  <h1>Реєстрація</h1>
+  <form action="#" method="post" th:action="@{/auth/register}" th:object="${user}">
+    <div class="block">
+      <label class="label-reg" id="username">Ім'я:</label>
+      <input required th:field="*{username}" type="text"/>
+    </div>
+    <div class="block">
+      <label for="password">Пароль:</label>
+      <input id="password" required th:field="*{password}" type="password"/>
+    </div>
+    <div class="block">
+      <button type="submit">Зареєструватися</button>
+    </div>
+  </form>
+  <div class="block" th:if="${error}" th:text="${error}"></div>
+</div>
+</body>
+</html>

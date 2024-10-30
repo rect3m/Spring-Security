@@ -1,0 +1,86 @@
+/* Закріплена верхня панель */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 15px 0;
+  background-color: #333;
+  color: white;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+}
+
+/* Стиль посилань у navbar */
+.navbar a {
+  color: white;
+  text-decoration: none;
+  font-size: 16px;
+  padding: 10px 15px;
+  transition: color 0.3s ease;
+}
+
+/* Стиль при наведенні на посилання */
+.navbar a:hover {
+  color: #ffd700;
+}
+
+/* Контейнер для змінюваного контенту */
+.content {
+  padding-top: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+  background-color: #f9f9f9;
+  text-align: center;
+}
+
+/* Приховані секції */
+.section {
+  display: none;
+}
+
+/* Видима секція */
+.section.active {
+  display: block;
+}
+
+
+/* Стилі для випадаючого списку */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #565656;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  border-radius: 4px; /* Додаємо закруглення */
+}
+
+.dropdown-content a {
+  color: white;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  transition: background-color 0.3s ease; /* Плавний перехід */
+}
+
+/* Змінюємо колір при наведенні */
+.dropdown-content a:hover {
+  color: #ffd700; /* Змінюємо колір тексту */
+}
+
+/* Показати випадаючий список при натисканні */
+.show {
+  display: block;
+}

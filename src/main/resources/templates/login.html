@@ -1,0 +1,38 @@
+<!-- src/main/resources/templates/login.html -->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+      name="viewport">
+  <link href="../static/css/style.css" rel="stylesheet" th:href="@{/css/style.css}">
+  <title>Login</title>
+</head>
+<body>
+<div class="form-container">
+  <h1>Авторизація</h1>
+  <form action="#" method="post" th:action="@{/auth/login}">
+    <div class="block">
+      <label class="label-login" for="username">Логін:</label>
+      <input id="username" name="username" required type="text"/>
+    </div>
+
+    <div class="block">
+      <label for="password">Пароль:</label>
+      <input id="password" name="password" required type="password"/>
+    </div>
+
+    <div class="block">
+      <button type="submit">Увійти</button>
+      <a href="/oauth2/authorization/google">Login with Google</a>
+    </div>
+
+    <div class="block" th:if="${param.error}">
+      <p style="color:red;">Неправильне ім'я користувача або пароль.</p>
+    </div>
+
+  </form>
+</div>
+</body>
+</html>

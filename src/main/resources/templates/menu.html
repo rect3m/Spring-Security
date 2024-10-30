@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <link href="../static/css/style.css" rel="stylesheet" th:href="@{/css/style.css}">
+  <title>Home</title>
+</head>
+<body onload="loadContent('/home')">
+<!-- Фіксоване меню -->
+<div class="navbar">
+  <a href="#" onclick="loadContent('/home')">Головна</a>
+  <a href="#" onclick="loadContent('/about')">Про нас</a>
+  <a href="#" onclick="loadContent('/services')">Послуги</a>
+  <a href="#" onclick="loadContent('/contact')">Контакти</a>
+
+  <!-- Випадаючий список для авторизації або профілю користувача -->
+  <div class="dropdown">
+    <a href="#" onclick="toggleDropdown()"
+       th:text="${username != null} ? ${username} : 'Авторизація'">Авторизація</a>
+    <div class="dropdown-content" id="authDropdown">
+      <a href="#" onclick="loadContent('/auth/login')" th:if="${username == null}">Увійти</a>
+      <a href="#" onclick="loadContent('/auth/register')" th:if="${username == null}">Зареєструватися</a>
+
+      <!-- Пункти меню для авторизованого користувача -->
+      <a href="#" onclick="loadContent('/profile')" th:if="${username != null}">Мій профіль</a>
+      <a href="/logout" th:if="${username != null}">Вийти</a>
+    </div>
+  </div>
+
+</div>
+
+<!-- Контейнер для динамічного контенту -->
+<div class="content">
+  <div class="section">
+    <h1 id="page-title">Контент сторінки</h1>
+    <p id="page-content">Тут буде завантажений контент сторінки.</p>
+  </div>
+</div>
+
+<!-- Додаємо скрипт для AJAX-запитів -->
+<script>
+  function loadContent(url) {
+    fetch(url)
+    .then(response => response.text())
+    .then(html => {
+      document.querySelector('.content').innerHTML = html;
+    })
+    .catch(error => console.error('Помилка при завантаженні контенту:', error));
+  }
+
+  // Функція для відображення або приховування випадаючого списку
+  function toggleDropdown() {
+    document.getElementById("authDropdown").classList.toggle("show");
+  }
+
+  // Закрити випадаючий список при кліку поза ним
+  window.onclick = function (event) {
+    if (!event.target.matches('.dropdown a')) {
+      var dropdowns = document.getElementsByClassName("dropdown-content");
+      for (var i = 0; i < dropdowns.length; i++) {
+        var openDropdown = dropdowns[i];
+        if (openDropdown.classList.contains('show')) {
+          openDropdown.classList.remove('show');
+        }
+      }
+    }
+  }
+</script>
+</body>
+</html>
